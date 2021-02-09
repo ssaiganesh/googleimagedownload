@@ -14,6 +14,7 @@ GOOGLE_IMAGE = \
 # that allows the network protocol peers to identify the application type, 
 # operating system, and software version of the requesting software user agent.
 # needed for google search
+#this was copied from another code. Not exactly sure of the details within yet
 usr_agent = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -27,7 +28,7 @@ usr_agent = {
 SAVE_FOLDER = 'images'
 def main():
     if not os.path.exists(SAVE_FOLDER):
-        os.mkdir(SAVE_FOLDER)
+        os.mkdir(SAVE_FOLDER) #creates new folder for images
 
     download_images()
 
@@ -43,8 +44,8 @@ def download_images():
     response = requests.get(searchurl, headers=usr_agent)
     html - response.text
 
-    soup = BeautifulSoup(html, 'html.parser')
-    results = soup.findAll('img', class = "rg_i Q4LuWd", limit=n_images)
+    soup = BeautifulSoup(html, 'html.parser') 
+    results = soup.findAll('img', class = "rg_i Q4LuWd", limit=n_images) #From the html code of the google images site
 
     imagelinks = []
     for result in results :
